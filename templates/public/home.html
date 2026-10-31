@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Aroma Gourmet | Cafeteria{% endblock %}
+{% block content %}
+<header class="hero" id="inicio">
+  <nav class="nav container"><a class="brand" href="#inicio">AROMA <span>GOURMET</span></a><div><a href="#cardapio">Cardápio</a><a href="{{ url_for('public.cart') }}">Pedido <b class="cart-badge">{{ cart_count }}</b></a><a href="{{ url_for('public.track_order') }}">Acompanhar pedido</a><a class="nav-link" href="{{ url_for('admin.login') }}">Área administrativa</a></div></nav>
+  <section class="hero-content container"><p class="eyebrow">CAFÉ ESPECIAL · FEITO COM CALMA</p><h1>O seu ritual de<br><em>todos os dias.</em></h1><p>Grãos selecionados, receitas autorais e acompanhamentos preparados para transformar pausas em bons momentos.</p><a class="button" href="#cardapio">Conheça o cardápio</a></section>
+</header>
+<main>
+  <section class="story container"><div><p class="eyebrow">NOSSA ESSÊNCIA</p><h2>Uma cafeteria para ficar.</h2></div><p>Na Aroma Gourmet, cada xícara começa com bons grãos e termina em uma experiência acolhedora. Nosso cardápio une clássicos bem executados e sabores que convidam a descobrir algo novo.</p></section>
+  <section class="menu-section" id="cardapio"><div class="container"><p class="eyebrow">SELECIONADOS PARA VOCÊ</p><h2>Cardápio</h2>{% include 'partials/messages.html' %}<div class="filters" aria-label="Filtrar cardápio"><button class="filter active" data-category="todos">Todos</button>{% for category in categories %}<button class="filter" data-category="{{ category.nome }}">{{ category.nome }}</button>{% endfor %}</div><div class="product-grid">{% for product in products %}<article class="product-card" data-category="{{ product.categoria_nome }}"><img src="{{ product.imagem_url }}" alt="{{ product.nome }}"><div class="product-info"><span>{{ product.categoria_nome }}</span><h3>{{ product.nome }}</h3><p>{{ product.descricao }}</p><div class="product-bottom"><strong>R$ {{ '%.2f'|format(product.preco)|replace('.', ',') }}</strong><form method="post" action="{{ url_for('public.add_to_cart', product_id=product.id) }}"><button class="add-button" type="submit" aria-label="Adicionar {{ product.nome }} ao pedido">+</button></form></div></div></article>{% else %}<p class="empty-menu">Ainda não há produtos disponíveis.</p>{% endfor %}</div></div></section>
+</main>
+<footer><div class="container"><span class="brand">AROMA <span>GOURMET</span></span><p>Projeto acadêmico demonstrativo · Produtos e dados fictícios.</p></div></footer>
+{% endblock %}

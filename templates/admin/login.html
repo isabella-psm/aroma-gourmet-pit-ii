@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Entrar | Aroma Gourmet{% endblock %}
+{% block content %}
+<main class="auth-page"><a class="brand dark" href="{{ url_for('public.home') }}">AROMA <span>GOURMET</span></a><section class="auth-card"><p class="eyebrow">PAINEL ADMINISTRATIVO</p><h1>Boas-vindas.</h1><p>Use as credenciais de demonstração para gerenciar o cardápio.</p>{% include 'partials/messages.html' %}<form method="post" class="form"><label>E-mail<input name="email" type="email" required autocomplete="email" placeholder="admin@aromagourmet.local"></label><label>Senha<input name="senha" type="password" required autocomplete="current-password" placeholder="••••••••"></label><button class="button" type="submit">Entrar no painel</button></form><small>Demonstração: admin@aromagourmet.local / admin123</small></section></main>
+{% endblock %}

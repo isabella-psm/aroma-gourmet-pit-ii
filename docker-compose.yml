@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: aroma-gourmet-db
+    environment:
+      POSTGRES_DB: aroma_gourmet
+      POSTGRES_USER: aroma
+      POSTGRES_PASSWORD: aroma
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

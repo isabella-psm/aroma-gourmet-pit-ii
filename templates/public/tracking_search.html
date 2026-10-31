@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Acompanhar pedido | Aroma Gourmet{% endblock %}
+{% block content %}
+<header class="inner-header"><nav class="nav container"><a class="brand" href="{{ url_for('public.home') }}">AROMA <span>GOURMET</span></a><a href="{{ url_for('public.home') }}">Voltar à cafeteria</a></nav></header><main class="tracking-page container"><p class="eyebrow">ACOMPANHAMENTO</p><h1>Onde está o seu pedido?</h1><p>Informe o código recebido ao finalizar o pedido.</p>{% include 'partials/messages.html' %}<form method="post" class="tracking-form"><label>Código do pedido<input name="codigo" required maxlength="12" placeholder="Ex.: A1B2C3D4E5F6" autocomplete="off"></label><button class="button" type="submit">Acompanhar pedido</button></form></main>
+{% endblock %}
