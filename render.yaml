@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: aroma-gourmet-pit-ii
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:create_app()
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true

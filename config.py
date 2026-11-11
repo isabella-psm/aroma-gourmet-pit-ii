@@ -6,7 +6,8 @@ BASE_DIR = Path(__file__).resolve().parent
 
 
 class Config:
-    SECRET_KEY = "troque-esta-chave-em-producao"
+    # No Render, defina SECRET_KEY como variavel de ambiente.
+    SECRET_KEY = os.getenv("SECRET_KEY", "desenvolvimento-local-apenas")
     DATABASE = BASE_DIR / "instance" / "cafeteria.db"
     # Defina DATABASE_URL para usar PostgreSQL, por exemplo:
     # postgresql://aroma:aroma@localhost:5432/aroma_gourmet
